@@ -15,7 +15,7 @@ public class JsonDataIngester {
         List<SaleTransaction> saleTransactionList = null;
 
         try {
-            saleTransactionList = objectMapper.readValue(new File("example-data/sales-jp.xml"), new TypeReference<List<SaleTransaction>>() {});
+            saleTransactionList = objectMapper.readValue(new File("example-data/sales-jp.json"), new TypeReference<List<SaleTransaction>>() {});
             for (SaleTransaction transaction : saleTransactionList) {
                 System.out.println(transaction);
             }
