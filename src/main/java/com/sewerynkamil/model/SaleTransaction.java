@@ -15,68 +15,41 @@ public class SaleTransaction {
     private String discount;
     private long userId;
 
+    @JsonProperty("tran_id")
+    @JsonAlias("transaction_id")
     public String getUuid() {
         return uuid;
-    }
-
-    public void setUuid(String uuid) {
-        this.uuid = uuid;
     }
 
     public String getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(String timestamp) {
-        this.timestamp = timestamp;
-    }
-
+    @JsonProperty("coffee_type")
     public String getType() {
         return type;
     }
 
-    public void setType(String type) {
-        this.type = type;
-    }
-
+    @JsonProperty("coffee_size")
     public String getSize() {
         return size;
-    }
-
-    public void setSize(String size) {
-        this.size = size;
     }
 
     public String getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
-        this.price = price;
-    }
-
     public String getOffer() {
         return offer;
-    }
-
-    public void setOffer(String offer) {
-        this.offer = offer;
     }
 
     public String getDiscount() {
         return discount;
     }
 
-    public void setDiscount(String discount) {
-        this.discount = discount;
-    }
-
+    @JsonProperty("userid")
     public long getUserId() {
         return userId;
-    }
-
-    public void setUserId(long userId) {
-        this.userId = userId;
     }
 
     public static final class SaleTransactionBuilder {
@@ -89,8 +62,6 @@ public class SaleTransaction {
         private String discount;
         private Long userId;
 
-        @JsonProperty("tran_id")
-        @JsonAlias("transaction_id")
         public SaleTransactionBuilder uuid(final String uuid) {
             this.uuid = uuid;
             return this;
@@ -101,7 +72,6 @@ public class SaleTransaction {
             return this;
         }
 
-        @JsonProperty("coffee_type")
         public SaleTransactionBuilder type(final String type) {
             this.type = type;
             return this;
@@ -127,7 +97,6 @@ public class SaleTransaction {
             return this;
         }
 
-        @JsonProperty("userid")
         public SaleTransactionBuilder userId(final Long userId) {
             this.userId = userId;
             return this;
