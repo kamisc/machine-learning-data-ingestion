@@ -15,8 +15,6 @@ public class SaleTransaction {
     private String discount;
     private long userId;
 
-    @JsonProperty("tran_id")
-    @JsonAlias("transaction_id")
     public String getUuid() {
         return uuid;
     }
@@ -37,7 +35,6 @@ public class SaleTransaction {
         return type;
     }
 
-    @JsonProperty("coffee_type")
     public void setType(String type) {
         this.type = type;
     }
@@ -46,7 +43,6 @@ public class SaleTransaction {
         return size;
     }
 
-    @JsonProperty("coffe_size")
     public void setSize(String size) {
         this.size = size;
     }
@@ -79,9 +75,77 @@ public class SaleTransaction {
         return userId;
     }
 
-    @JsonProperty("userid")
     public void setUserId(long userId) {
         this.userId = userId;
+    }
+
+    public static final class SaleTransactionBuilder {
+        private String uuid;
+        private String timestamp;
+        private String type;
+        private String size;
+        private String price;
+        private String offer;
+        private String discount;
+        private Long userId;
+
+        @JsonProperty("tran_id")
+        @JsonAlias("transaction_id")
+        public SaleTransactionBuilder uuid(final String uuid) {
+            this.uuid = uuid;
+            return this;
+        }
+
+        public SaleTransactionBuilder timestamp(final String timestamp) {
+            this.timestamp = timestamp;
+            return this;
+        }
+
+        @JsonProperty("coffee_type")
+        public SaleTransactionBuilder type(final String type) {
+            this.type = type;
+            return this;
+        }
+
+        public SaleTransactionBuilder size(final String size) {
+            this.size = size;
+            return this;
+        }
+
+        public SaleTransactionBuilder price(final String price) {
+            this.price = price;
+            return this;
+        }
+
+        public SaleTransactionBuilder offer(final String offer) {
+            this.offer = offer;
+            return this;
+        }
+
+        public SaleTransactionBuilder discount(final String discount) {
+            this.discount = discount;
+            return this;
+        }
+
+        @JsonProperty("userid")
+        public SaleTransactionBuilder userId(final Long userId) {
+            this.userId = userId;
+            return this;
+        }
+
+        public SaleTransaction build() {
+            SaleTransaction saleTransaction = new SaleTransaction();
+            saleTransaction.uuid = this.uuid;
+            saleTransaction.timestamp = this.timestamp;
+            saleTransaction.type = this.type;
+            saleTransaction.size = this.size;
+            saleTransaction.price = this.price;
+            saleTransaction.offer = this.offer;
+            saleTransaction.discount = this.discount;
+            saleTransaction.userId = this.userId;
+
+            return saleTransaction;
+        }
     }
 
     @Override
@@ -99,7 +163,7 @@ public class SaleTransaction {
 
     @Override
     public String toString() {
-        return "SaleTransaction{" +
+        return "Transaction{" +
                 "uuid='" + uuid + '\'' +
                 ", timestamp='" + timestamp + '\'' +
                 ", type='" + type + '\'' +
